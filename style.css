@@ -380,6 +380,228 @@ footer {
 }
 
 
+/* ============= INSIGHTS ============ */
+
+#insights {
+    margin-top: 3rem;
+}
+
+.insights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.insight-card {
+    background: var(--card);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.insight-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.insight-icon {
+    font-size: 2.5rem;
+    min-width: 60px;
+    text-align: center;
+}
+
+.insight-content h4 {
+    color: var(--head);
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.insight-content p {
+    color: var(--green);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* ============= CHARTS ============ */
+
+#charts {
+    margin-top: 3rem;
+}
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.chart-container {
+    background: var(--card);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.chart-container h3 {
+    color: var(--head);
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* ============= GOALS ============ */
+
+#goals {
+    margin-top: 3rem;
+}
+
+.goals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.goal-card {
+    background: var(--card);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.goal-card:hover {
+    transform: translateY(-3px);
+}
+
+.goal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.goal-header h3 {
+    color: var(--head);
+    font-size: 1.125rem;
+}
+
+.goal-delete {
+    cursor: pointer;
+    color: var(--red);
+    font-size: 1.2rem;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.goal-delete:hover {
+    opacity: 1;
+}
+
+.goal-progress {
+    margin-top: 1rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0.5rem 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--green), var(--light-green));
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+
+.goal-amounts {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    color: var(--head);
+    margin-top: 0.5rem;
+}
+
+.goal-percentage {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--green);
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+/* ============= FILTERS ============ */
+
+.transaction-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.filters {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+#searchTransaction {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+#filterCategory {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+}
+
+select#category {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+}
+
+/* ============= CATEGORY BADGES ============ */
+
+.category-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.category-alimentacao { background: #FFE5B4; color: #8B4513; }
+.category-transporte { background: #B0E0E6; color: #00688B; }
+.category-lazer { background: #FFB6C1; color: #8B008B; }
+.category-saude { background: #98FB98; color: #006400; }
+.category-educacao { background: #DDA0DD; color: #8B008B; }
+.category-salario { background: #98FB98; color: #006400; }
+.category-investimento { background: #F0E68C; color: #8B7500; }
+.category-outros { background: #D3D3D3; color: #696969; }
+
 /* ============= ANIMATIONS ============ */
 
 @keyframes fade-in {
@@ -390,3 +612,67 @@ footer {
       opacity: 1;
     }
   }
+
+@keyframes slide-up {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scale-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.insight-card {
+    animation: scale-in 0.5s ease-out backwards;
+}
+
+.insight-card:nth-child(1) { animation-delay: 0.1s; }
+.insight-card:nth-child(2) { animation-delay: 0.2s; }
+.insight-card:nth-child(3) { animation-delay: 0.3s; }
+.insight-card:nth-child(4) { animation-delay: 0.4s; }
+
+.chart-container {
+    animation: slide-up 0.6s ease-out backwards;
+}
+
+.goal-card {
+    animation: scale-in 0.5s ease-out backwards;
+}
+
+/* ============= RESPONSIVE UPDATES ============ */
+
+@media (max-width: 800px) {
+    .insights-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .transaction-header {
+        flex-direction: column;
+    }
+
+    .filters {
+        flex-direction: column;
+    }
+
+    #searchTransaction,
+    #filterCategory {
+        width: 100%;
+    }
+}
