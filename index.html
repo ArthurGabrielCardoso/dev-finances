@@ -10,6 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   </head>
   <body>
     <header>
@@ -50,15 +51,93 @@
         </div>
       </section>
 
+      <!-- Insights Section -->
+      <section id="insights">
+        <h2>📊 Insights Inteligentes</h2>
+        <div class="insights-grid">
+          <div class="insight-card">
+            <div class="insight-icon">🎯</div>
+            <div class="insight-content">
+              <h4>Gasto Médio Diário</h4>
+              <p id="avgDaily">R$ 0,00</p>
+            </div>
+          </div>
+          <div class="insight-card">
+            <div class="insight-icon">📈</div>
+            <div class="insight-content">
+              <h4>Maior Gasto</h4>
+              <p id="maxExpense">R$ 0,00</p>
+            </div>
+          </div>
+          <div class="insight-card">
+            <div class="insight-icon">💰</div>
+            <div class="insight-content">
+              <h4>Maior Entrada</h4>
+              <p id="maxIncome">R$ 0,00</p>
+            </div>
+          </div>
+          <div class="insight-card">
+            <div class="insight-icon">📊</div>
+            <div class="insight-content">
+              <h4>Total de Transações</h4>
+              <p id="totalTransactions">0</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Charts Section -->
+      <section id="charts">
+        <h2>📈 Análise Visual</h2>
+        <div class="charts-grid">
+          <div class="chart-container">
+            <h3>Gastos por Categoria</h3>
+            <canvas id="categoryChart"></canvas>
+          </div>
+          <div class="chart-container">
+            <h3>Histórico Mensal</h3>
+            <canvas id="timelineChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- Goals Section -->
+      <section id="goals">
+        <h2>🎯 Metas Financeiras</h2>
+        <button onclick="GoalModal.open()" class="button new">+ Nova Meta</button>
+        <div id="goals-container" class="goals-grid">
+          <!-- Goals will be inserted here -->
+        </div>
+      </section>
+
       <section id="transaction">
         <h2 class="sr-only">Transações</h2>
 
-        <a href="#"
-        onclick="Modal.open()" 
-        class="button new"> + Nova transação</a>
+        <div class="transaction-header">
+          <a href="#"
+          onclick="Modal.open()"
+          class="button new"> + Nova transação</a>
+
+          <div class="filters">
+            <input type="text" id="searchTransaction" placeholder="🔍 Buscar transação..." />
+            <select id="filterCategory">
+              <option value="all">Todas Categorias</option>
+              <option value="alimentacao">🍔 Alimentação</option>
+              <option value="transporte">🚗 Transporte</option>
+              <option value="lazer">🎮 Lazer</option>
+              <option value="saude">💊 Saúde</option>
+              <option value="educacao">📚 Educação</option>
+              <option value="salario">💼 Salário</option>
+              <option value="investimento">📈 Investimento</option>
+              <option value="outros">📦 Outros</option>
+            </select>
+          </div>
+        </div>
+
         <table id="data-table">
           <thead>
             <tr>
+              <th>Categoria</th>
               <th>Descrição</th>
               <th>Valor</th>
               <th>Data</th>
@@ -83,6 +162,21 @@
                 name="description"
                 placeholder="Descrição"
               />
+            </div>
+
+            <div class="input-group">
+              <label class="sr-only" for="category"> Categoria </label>
+              <select id="category" name="category">
+                <option value="">Selecione uma categoria</option>
+                <option value="alimentacao">🍔 Alimentação</option>
+                <option value="transporte">🚗 Transporte</option>
+                <option value="lazer">🎮 Lazer</option>
+                <option value="saude">💊 Saúde</option>
+                <option value="educacao">📚 Educação</option>
+                <option value="salario">💼 Salário</option>
+                <option value="investimento">📈 Investimento</option>
+                <option value="outros">📦 Outros</option>
+              </select>
             </div>
 
             <div class="input-group">
@@ -122,6 +216,57 @@
         </div>
       </div>
     </div>
+
+    <!-- Goal Modal -->
+    <div class="modal-overlay" id="goal-modal">
+      <div class="modal">
+        <div id="goal-form">
+          <h2>Nova Meta Financeira</h2>
+          <form action="" onsubmit="GoalForm.submit(event)">
+            <div class="input-group">
+              <label class="sr-only" for="goalName"> Nome da Meta </label>
+              <input
+                type="text"
+                id="goalName"
+                name="goalName"
+                placeholder="Nome da meta (ex: Viagem para Europa)"
+              />
+            </div>
+
+            <div class="input-group">
+              <label class="sr-only" for="goalAmount"> Valor desejado </label>
+              <input
+                type="number"
+                step="0.01"
+                id="goalAmount"
+                name="goalAmount"
+                placeholder="Valor total da meta"
+              />
+            </div>
+
+            <div class="input-group">
+              <label class="sr-only" for="goalCurrent"> Valor já economizado </label>
+              <input
+                type="number"
+                step="0.01"
+                id="goalCurrent"
+                name="goalCurrent"
+                placeholder="Quanto já possui (opcional)"
+                value="0"
+              />
+            </div>
+
+            <div class="input-group actions">
+              <a href="#"
+              onclick="GoalModal.close()"
+              class="button cancel"> Cancelar </a>
+              <button> Salvar </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <footer>
       <p>dev<a>.</a>finance<a>$</a></p>
     </footer>
